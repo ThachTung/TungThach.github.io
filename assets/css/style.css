@@ -749,6 +749,9 @@ section {
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
 }
+img {
+  border-radius: 3.5%;
+}
 
 .portfolio-details .portfolio-details-slider .swiper-pagination {
   margin-top: 20px;
@@ -804,6 +807,9 @@ section {
   padding: 0;
 }
 
+video {
+  border-radius: 3.5%;
+}
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
