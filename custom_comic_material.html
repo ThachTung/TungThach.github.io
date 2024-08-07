@@ -68,7 +68,7 @@
                         <div class="post-heading">
                             <h1>Custom Comic Material</h1>
                             <h2 class="subheading">A simple material that I made in my free time by using Susbtance Painter and Unreal Engine.</h2>
-                            <h3 class="subheading">Deadpool model that I found on sketchfab from user <a href="https://sketchfab.com/bruhmoment8369771">bruhmoment8369771</a> was only used for studying and It's not used for commercial purpose totally.</h3>
+                            <h3 class="subheading">Deadpool model that I found on sketchfab from user <a href="https://sketchfab.com/bruhmoment8369771" target="_blank">bruhmoment8369771</a> was only used for studying and It's not used for commercial purpose totally.</h3>
                             <span class="meta">
                             </span>
                         </div>
@@ -80,19 +80,42 @@
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <p>I really liked to read heroes comic since I was a kid. I even thought about become a Comic Artist. Right now, I can't be a Comic Artist like I want before. But I still have chance to create something similar. And it's Technical Artist.</p>
-                    <p>I've thought about making a simple comic-style material in Unreal Engine when I saw a poster of DC vs Marvel theme in my nephew.</p>
+                    <p>I really liked to read heroes comic since I was a kid. I even thought about become a Comic Artist. Right now, I can't be a Comic Artist like I want before. But I still have chance to create something similar. And it's Technical Artist.<br>
+                    I've thought about making a simple comic-style material in Unreal Engine when I saw a DC vs Marvel theme poster of my nephew.</p>
                     <div style="position:relative; width:100%; height:0px; padding-bottom:56.250%"><iframe allow="fullscreen;autoplay" allowfullscreen height="100%" src="https://streamable.com/e/xmow33?autoplay=1&muted=1" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
                     <p></p>
                     <p class="border-top"></p>
-                    <p>I used Substance Painter to create comic-style ink based on original model's base color. Because of it's versatile and powerful features like masking, anchor, generator... my work was much easier in beginning.</p>
+                    <p>Firstly, I used Substance Painter to create comic-style ink based on original model's base color. Because of it's versatile and powerful features like masking, anchor, generator... my work was much easier in beginning.</p>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/spp_02.png" alt="..." style="max-width:100%;height:auto;"/></a>
-                    <p>Start from original base color, then I create new first layer 'ink base' for sharp edges, then duplicate it to make darker black color.</p>
-                    <p>Next, I created 'ink shadow' layer that will show stripes and black color in shadow area. Layer 'ink shadow highlight' gives color for stripes and gray soft shadow areas.</p>
-                    <p>Finally, 'ink dark edge' layer bring back dark color for edges and 'ink stripe' layer gives some details for pocket and gun.</p>
+                    <p>Start from original base color, then I create new first layer 'ink base' for sharp edges, then duplicate it to make darker black color. <br>
+                    Next, I created 'ink shadow' layer that will show stripes and black color in shadow area. Layer 'ink shadow highlight' gives color for stripes and gray soft shadow areas.<br>
+                    Finally, 'ink dark edge' layer bring back dark color for edges and 'ink stripe' layer gives some details for pocket and gun.</p>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/spp_03.gif" alt="..." style="max-width:100%;height:auto;"/></a>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/spp.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     <p class="border-top"></p>
+                    <p>Next, I use Unreal Engine to render final visual. The version that I used is 4.23. <br>
+                    I create materials for Deadpool model with textures exported from Substance Painter. Starting from logics of lighting information and base color. By using dot product between 1 vector 3 dimension and vertex normal of model, I get a black-and-white mask. It will be usefull for adjust color variation after. <br>
+                    There are two cases in using this logic. One for dynamic mask that doesn't follow mesh. Another for static mask that follows mesh when it's transformed in level. 
+                    </p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue00.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p>The created mask above is used to be input value for if-logic to make color variation mask. Like you can see in image below, if any values is higher than highlight threshold, it will receive value from Highlight parameter. Others receive value from Main parameter. I repeat this calculation for shadow area. <br>
+                    We will have the result of 3 color variations which was mainly adjust through 3 parameters - Highlight, Main and Shadow Strength. Highlight and Main Color Strength parameter is used to make color of Highlight and Main part brighter than Shadow area. 
+                    </p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue01.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p>Next, by using some simple calculations, I had multiple lines pattern that was controlled by fresnel mask node.</p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue02.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p>Finally, I add some dark color in mask that was 'extracted' from normal map. Emissive color was added around model through fresnel mask, too.</p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue2.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue3.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p>Full material graph</p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue4.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p class="border-top"></p>
+                    <p>Outline post processing material was recreated. The original material is presented by <a href="https://www.youtube.com/watch?v=Wpsqfpxb55Y" target="_blank">Ben Cloward.</a></p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/bencloward.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p>Background material graph. It's simple as it is.</p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/bg.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p class="border-top"></p>
+                    <p>More images.</p>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/CustomComicMaterial0.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     <p class="border-top"></p>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/CustomComicMaterial1.png" alt="..." style="max-width:100%;height:auto;"/></a>
@@ -110,6 +133,8 @@
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/CustomComicMaterial7.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     <p class="border-top"></p>
                     <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/CustomComicMaterial8.png" alt="..." style="max-width:100%;height:auto;"/></a>
+                    <p class="border-top"></p>
+                    <img class="img-fluid" src="assets/img/portfolio/custom_comic_material/ue8.png" alt="..." style="max-width:100%;height:auto;"/></a>
                 </div>
             </div>
         </article>
