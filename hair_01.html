@@ -151,7 +151,7 @@
                     <img class="img-fluid" src="assets/img/portfolio/hair_01/02-05-01.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     
                     <p class="border-top"></p>
-                    <p>Bước cuối cùng, các mask được kết hợp với nhau và định ra phần màu hiển thị của tóc. Cũng như là roughness, metallic, specular và normal. Ở bước này, normal sẽ được generate ra từ phần mask của sợi tóc, nên sẽ không có normal map texture đầu vào. Cách generate normal map cũng khá đơn giản, mình sẽ dùng phần mask của sợi tóc để tạo ra "height map", sau đó dùng node NormalFromHeight để tạo ra normal map.</p>
+                    <p>Bước cuối cùng, các mask được kết hợp với nhau và định ra phần màu hiển thị của tóc. Cũng như là roughness, metallic, specular và normal. Ở bước này, normal sẽ được generate ra từ phần mask của sợi tóc, nên sẽ không có normal map texture đầu vào. Cách generate normal map cũng khá đơn giản, mình sẽ dùng phần mask của sợi tóc để tạo ra "height map", sau đó dùng node HeighToNormalSmooth để tạo ra normal map.</p>
                     <img class="img-fluid" src="assets/img/portfolio/hair_01/02-06.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     <img class="img-fluid" src="assets/img/portfolio/hair_01/02-07.png" alt="..." style="max-width:100%;height:auto;"/></a>
                     <img class="img-fluid" src="assets/img/portfolio/hair_01/02-08.png" alt="..." style="max-width:100%;height:auto;"/></a>
